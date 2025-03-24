@@ -4,8 +4,8 @@ Bunch of codes I'll write in `Go`, `Python`, and `C++` for fun and better unders
 
 To be covered (The content may change as the project goes) : 
 
-- [] Socket Level Programming
+- [ ] Socket Level Programming
 
-- [] Application Level Programming
-    - [] HTTP Clients
-    - [] HTTP Services
+- [ ] Application Level Programming
+    - [ ] HTTP Clients
+    - [ ] HTTP Services
