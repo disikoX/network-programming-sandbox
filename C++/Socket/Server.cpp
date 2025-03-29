@@ -13,7 +13,8 @@ const int PORT = 8080;
 int main() {
 
     int fd = socket(AF_INET, SOCK_STREAM, 0);
-    struct sockaddr_in server_addr;
+    struct sockaddr_in server_addr, client_addr;
+    socklen_t client_len = sizeof(client_addr);
 
     if (fd < 0)
     {
@@ -46,6 +47,41 @@ int main() {
         close(fd);
         return -1;
     }
+
+    //Handling client
+    char buffer[1024];
+    int bytes_received;
+
+    bytes_received = recv(fd, buffer, sizeof(buffer), 0);
+
+    if (bytes_received < 0)
+    {
+        perror("Error in receiving data");
+    }else {
+        
+        buffer[bytes_received] =  '\0';
+        cout << "Client message: " << buffer <<endl;
+
+        const char *response = "Message received";
+        send(fd, response, strlen(response), 0);
+
+    }
+    
+
+    // Accepting connection
+    while (true)
+    {
+        fd = accept(fd, (struct sockaddr * )&client_addr, &client_len);
+        if (fd < 0)
+        {
+            perror("Accept failed");
+            continue;
+        }
+
+        cout << "Accepted connection from client" << endl;
+        
+    }
+    
     
     close(fd);
 
