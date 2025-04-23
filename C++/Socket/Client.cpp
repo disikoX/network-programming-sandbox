@@ -8,7 +8,7 @@
 
 using namespace std;
 
-const int PORT = 8081;
+const int PORT = 8080;
 const char *SERVER_IP = "127.0.0.1";
 
 int main() {
